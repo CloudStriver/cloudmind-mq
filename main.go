@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"github.com/CloudStriver/cloudmind-mq/internal/config"
-	"github.com/CloudStriver/cloudmind-mq/internal/listen"
+	"github.com/CloudStriver/cloudmind-mq/app/config"
+	"github.com/CloudStriver/cloudmind-mq/app/listen"
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/logx"
 	"github.com/zeromicro/go-zero/core/service"

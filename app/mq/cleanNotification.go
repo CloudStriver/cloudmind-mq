@@ -1,9 +1,9 @@
 package mq
 
 import (
-	"github.com/CloudStriver/cloudmind-mq/internal/svc"
-	"github.com/CloudStriver/cloudmind-mq/internal/util/heap"
-	"github.com/CloudStriver/cloudmind-mq/internal/util/message"
+	"github.com/CloudStriver/cloudmind-mq/app/svc"
+	"github.com/CloudStriver/cloudmind-mq/app/util/heap"
+	"github.com/CloudStriver/cloudmind-mq/app/util/message"
 	"github.com/CloudStriver/go-pkg/utils/pconvertor"
 	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/cloudmind/system"
 	"github.com/bytedance/sonic"
