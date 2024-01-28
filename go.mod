@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/CloudStriver/go-pkg v0.0.0-20240117111745-b4ba57a38f44
-	github.com/CloudStriver/service-idl-gen-go v0.0.0-20240127152507-ef2faaa085cd
+	github.com/CloudStriver/service-idl-gen-go v0.0.0-20240128070544-5cb72c4c8edd
 	github.com/bytedance/sonic v1.10.2
 	github.com/jinzhu/copier v0.4.0
 	github.com/samber/lo v1.39.0
