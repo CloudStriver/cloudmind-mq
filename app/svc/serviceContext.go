@@ -1,7 +1,7 @@
 package svc
 
 import (
-	"github.com/CloudStriver/cloudmind-mq/internal/config"
+	"github.com/CloudStriver/cloudmind-mq/app/config"
 	"github.com/CloudStriver/go-pkg/utils/kitex/client"
 	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/cloudmind/system/systemservice"
 )

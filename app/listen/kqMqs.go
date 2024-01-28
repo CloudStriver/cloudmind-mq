@@ -2,9 +2,9 @@ package listen
 
 import (
 	"context"
-	"github.com/CloudStriver/cloudmind-mq/internal/config"
-	"github.com/CloudStriver/cloudmind-mq/internal/mq"
-	"github.com/CloudStriver/cloudmind-mq/internal/svc"
+	"github.com/CloudStriver/cloudmind-mq/app/config"
+	"github.com/CloudStriver/cloudmind-mq/app/mq"
+	"github.com/CloudStriver/cloudmind-mq/app/svc"
 	"github.com/zeromicro/go-queue/kq"
 	"github.com/zeromicro/go-zero/core/service"
 )
