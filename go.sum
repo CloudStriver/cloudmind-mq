@@ -375,8 +375,8 @@ github.com/ClickHouse/clickhouse-go v1.5.4/go.mod h1:EaI/sW7Azgz9UATzd5ZdZHRUhHg
 github.com/ClickHouse/clickhouse-go/v2 v2.0.14/go.mod h1:iq2DUGgpA4BBki2CVwrF8x43zqBjdgHtbexkFkh5a6M=
 github.com/CloudStriver/go-pkg v0.0.0-20240117111745-b4ba57a38f44 h1:7exnHSz2LCeghuVDVD8IS+JaPB/bxDJWFEL7xH5L2Tg=
 github.com/CloudStriver/go-pkg v0.0.0-20240117111745-b4ba57a38f44/go.mod h1:SsAxWs5EIcaDE/0e5buoFOWsM4lTvFZhySkV68+RT3g=
-github.com/CloudStriver/service-idl-gen-go v0.0.0-20240127152507-ef2faaa085cd h1:sC6f5hFtiUN51BCIbkfgteLn9UjRpWnjgl77fo7MzFw=
-github.com/CloudStriver/service-idl-gen-go v0.0.0-20240127152507-ef2faaa085cd/go.mod h1:chtR82RvfrjUujTGWROSCNAwF9Lh/U959k34bXIDvBI=
+github.com/CloudStriver/service-idl-gen-go v0.0.0-20240128070544-5cb72c4c8edd h1:LbcJw2+KiqJ0ksPfSWC/ia/SZTEl1qDwanJLeOY9X8s=
+github.com/CloudStriver/service-idl-gen-go v0.0.0-20240128070544-5cb72c4c8edd/go.mod h1:chtR82RvfrjUujTGWROSCNAwF9Lh/U959k34bXIDvBI=
 github.com/DATA-DOG/go-sqlmock v1.5.0/go.mod h1:f/Ixk793poVmq4qj/V1dPUg2JEAKC73Q5eFN3EC/SaM=
 github.com/NYTimes/gziphandler v0.0.0-20170623195520-56545f4a5d46/go.mod h1:3wb06e3pkSAbeQ52E9H9iFoQsEEwGN64994WTCIhntQ=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=

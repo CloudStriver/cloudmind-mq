@@ -69,7 +69,7 @@ func (l *CreateNotificationsMq) consume(ch chan []*message.CreateNotificationsMe
 
 		notifications := lo.Map[*message.CreateNotificationsMessage, *system.Notification](msg, func(m *message.CreateNotificationsMessage, _ int) *system.Notification {
 			notification := &system.Notification{}
-			_ = copier.Copy(&m.Notification, notification)
+			_ = copier.Copy(notification, m.Notification)
 			return notification
 		})
 		if _, err := l.svcCtx.CloudMindSystemRPC.CreateNotifications(l.ctx, &system.CreateNotificationsReq{
