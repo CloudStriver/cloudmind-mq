@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/CloudStriver/go-pkg v0.0.0-20240117111745-b4ba57a38f44
-	github.com/CloudStriver/service-idl-gen-go v0.0.0-20240128070544-5cb72c4c8edd
+	github.com/CloudStriver/service-idl-gen-go v0.0.0-20240207025156-072e8b2ff946
 	github.com/bytedance/sonic v1.10.2
 	github.com/jinzhu/copier v0.4.0
 	github.com/samber/lo v1.39.0
@@ -12,6 +12,8 @@ require (
 	github.com/zeromicro/go-zero v1.6.1
 	golang.org/x/net v0.19.0
 )
+
+//replace github.com/CloudStriver/service-idl-gen-go => ../service-idl-gen-go
 
 require (
 	github.com/apache/thrift v0.16.0 // indirect

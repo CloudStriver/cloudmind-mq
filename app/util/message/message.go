@@ -5,13 +5,19 @@ import (
 )
 
 type CreateNotificationsMessage struct {
-	Notification *system.Notification
+	Notification *system.NotificationInfo
+}
+type UpdateNotificationsMessage struct {
+	OnlyNotificationIds []string
+	OnlyUserId          *string
+	OnlyType            *int64
+	OnlyIsRead          *bool
+	IsRead              bool
 }
 
-type ReadNotificationsMessage struct {
-	NotificationFilterOptions *system.NotificationFilterOptions
-}
-
-type CleanNotificationMessage struct {
-	UserId string
+type DeleteNotificationsMessage struct {
+	OnlyNotificationIds []string
+	OnlyUserId          *string
+	OnlyType            *int64
+	OnlyIsRead          *bool
 }
