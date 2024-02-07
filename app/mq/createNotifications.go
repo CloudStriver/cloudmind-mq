@@ -8,7 +8,6 @@ import (
 	"github.com/CloudStriver/go-pkg/utils/pconvertor"
 	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/cloudmind/system"
 	"github.com/bytedance/sonic"
-	"github.com/jinzhu/copier"
 	"github.com/samber/lo"
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -67,10 +66,8 @@ func (l *CreateNotificationsMq) consume(ch chan []*message.CreateNotificationsMe
 			return
 		}
 
-		notifications := lo.Map[*message.CreateNotificationsMessage, *system.Notification](msg, func(m *message.CreateNotificationsMessage, _ int) *system.Notification {
-			notification := &system.Notification{}
-			_ = copier.Copy(notification, m.Notification)
-			return notification
+		notifications := lo.Map[*message.CreateNotificationsMessage, *system.NotificationInfo](msg, func(m *message.CreateNotificationsMessage, _ int) *system.NotificationInfo {
+			return m.Notification
 		})
 		if _, err := l.svcCtx.CloudMindSystemRPC.CreateNotifications(l.ctx, &system.CreateNotificationsReq{
 			Notifications: notifications,

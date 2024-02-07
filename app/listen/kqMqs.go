@@ -13,7 +13,7 @@ import (
 func KqMqs(c config.Config, ctx context.Context, svcContext *svc.ServiceContext) []service.Service {
 	return []service.Service{
 		kq.MustNewQueue(c.CreateNotificationsConf, mq.NewCreateNotificationsMq(ctx, svcContext)),
-		kq.MustNewQueue(c.ReadNotificationsConf, mq.NewReadNotificationsMq(ctx, svcContext)),
-		kq.MustNewQueue(c.CleanNotificationConf, mq.NewCleanNotificationMq(ctx, svcContext)),
+		kq.MustNewQueue(c.DeleteNotificationsConf, mq.NewDeleteNotificationsMq(ctx, svcContext)),
+		kq.MustNewQueue(c.UpdateNotificationsConf, mq.NewUpdateNotificationsMq(ctx, svcContext)),
 	}
 }

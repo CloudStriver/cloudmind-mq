@@ -8,6 +8,6 @@ import (
 type Config struct {
 	service.ServiceConf
 	CreateNotificationsConf kq.KqConf
-	ReadNotificationsConf   kq.KqConf
-	CleanNotificationConf   kq.KqConf
+	UpdateNotificationsConf kq.KqConf
+	DeleteNotificationsConf kq.KqConf
 }
