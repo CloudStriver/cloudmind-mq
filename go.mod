@@ -4,9 +4,8 @@ go 1.20
 
 require (
 	github.com/CloudStriver/go-pkg v0.0.0-20240206060942-84060a3dd273
-	github.com/CloudStriver/service-idl-gen-go v0.0.0-20240209070137-e8c51d34a88f
+	github.com/CloudStriver/service-idl-gen-go v0.0.0-20240209101512-8d30bc8b3e54
 	github.com/bytedance/sonic v1.10.2
-	github.com/jinzhu/copier v0.4.0
 	github.com/samber/lo v1.39.0
 	github.com/zeromicro/go-queue v1.1.8
 	github.com/zeromicro/go-zero v1.6.1
@@ -44,6 +43,7 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.18.0 // indirect
 	github.com/iancoleman/strcase v0.2.0 // indirect
 	github.com/jhump/protoreflect v1.15.4 // indirect
+	github.com/jinzhu/copier v0.4.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kitex-contrib/monitor-prometheus v0.2.0 // indirect
 	github.com/kitex-contrib/obs-opentelemetry v0.2.5 // indirect
