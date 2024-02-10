@@ -14,4 +14,5 @@ type Config struct {
 	UpdateItemConf          kq.KqConf
 	DeleteItemConf          kq.KqConf
 	CreateFeedBacksConf     kq.KqConf
+	EnvHeader               string
 }

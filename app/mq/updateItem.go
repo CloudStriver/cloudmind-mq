@@ -1,12 +1,14 @@
 package mq
 
 import (
+	"fmt"
 	"github.com/CloudStriver/cloudmind-mq/app/svc"
 	"github.com/CloudStriver/cloudmind-mq/app/util/heap"
 	"github.com/CloudStriver/cloudmind-mq/app/util/message"
 	"github.com/CloudStriver/go-pkg/utils/pconvertor"
 	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/cloudmind/content"
 	"github.com/bytedance/sonic"
+	"github.com/cloudwego/kitex/pkg/remote/trans/nphttp2/metadata"
 	"github.com/zeromicro/go-zero/core/logx"
 	"golang.org/x/net/context"
 )
@@ -63,12 +65,12 @@ func (l *UpdateItemMq) consume(ch chan *message.UpdateItemMessage) {
 			logx.Errorf("UpdateItemMq->consume err : %v", ok)
 			return
 		}
+		fmt.Println(metadata.FromIncomingContext(l.ctx))
 		if _, err := l.svcCtx.CloudMindContentRPC.UpdateItem(l.ctx, &content.UpdateItemReq{
-			ItemId:     msg.ItemId,
-			IsHidden:   msg.IsHidden,
-			Labels:     msg.Labels,
-			Categories: msg.Categories,
-			Comment:    msg.Comment,
+			ItemId:   msg.ItemId,
+			IsHidden: msg.IsHidden,
+			Labels:   msg.Labels,
+			Comment:  msg.Comment,
 		}); err != nil {
 			logx.Errorf("UpdateItemMq->consume err : %v", err)
 		} else {

@@ -24,11 +24,10 @@ type DeleteNotificationsMessage struct {
 }
 
 type UpdateItemMessage struct {
-	ItemId     string   `protobuf:"bytes,1,opt,name=itemId,proto3" json:"itemId,omitempty"`
-	IsHidden   *bool    `protobuf:"varint,2,opt,name=isHidden,proto3,oneof" json:"isHidden,omitempty"`
-	Labels     []string `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty"`
-	Categories *int64   `protobuf:"bytes,4,rep,name=categories,proto3" json:"categories,omitempty"`
-	Comment    *string  `protobuf:"bytes,5,opt,name=comment,proto3,oneof" json:"comment,omitempty"`
+	ItemId   string   `protobuf:"bytes,1,opt,name=itemId,proto3" json:"itemId,omitempty"`
+	IsHidden *bool    `protobuf:"varint,2,opt,name=isHidden,proto3,oneof" json:"isHidden,omitempty"`
+	Labels   []string `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty"`
+	Comment  *string  `protobuf:"bytes,5,opt,name=comment,proto3,oneof" json:"comment,omitempty"`
 }
 
 type CreateFeedBacksMessage struct {
