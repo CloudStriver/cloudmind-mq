@@ -12,7 +12,7 @@ type Config struct {
 	DeleteNotificationsConf kq.KqConf
 	CreateItemConf          kq.KqConf
 	UpdateItemConf          kq.KqConf
-	//DeleteItemConf          kq.KqConf
-	CreateFeedBackConf kq.KqConf
-	EnvHeader          string
+	DeleteItemConf          kq.KqConf
+	CreateFeedBackConf      kq.KqConf
+	EnvHeader               string
 }
