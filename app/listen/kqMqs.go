@@ -12,10 +12,10 @@ import (
 // pub sub use kq (kafka)
 func KqMqs(c config.Config, ctx context.Context, svcContext *svc.ServiceContext) []service.Service {
 	return []service.Service{
-		kq.MustNewQueue(c.CreateNotificationsConf, mq.NewCreateNotificationsMq(ctx, svcContext)),
+		kq.MustNewQueue(c.CreateNotificationConf, mq.NewCreateNotificationMq(ctx, svcContext)),
 		kq.MustNewQueue(c.UpdateNotificationsConf, mq.NewUpdateNotificationsMq(ctx, svcContext)),
-		kq.MustNewQueue(c.CreateItemsConf, mq.NewCreateItemsMq(ctx, svcContext)),
+		kq.MustNewQueue(c.CreateItemConf, mq.NewCreateItemMq(ctx, svcContext)),
 		kq.MustNewQueue(c.UpdateItemConf, mq.NewUpdateItemMq(ctx, svcContext)),
-		kq.MustNewQueue(c.CreateFeedBacksConf, mq.NewCreateFeedBacksMq(ctx, svcContext)),
+		kq.MustNewQueue(c.CreateFeedBackConf, mq.NewCreateFeedBackMq(ctx, svcContext)),
 	}
 }

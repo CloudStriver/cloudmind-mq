@@ -1,10 +1,6 @@
 package message
 
-import (
-	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/cloudmind/content"
-)
-
-type CreateNotificationsMessage struct {
+type CreateNotificationMessage struct {
 	TargetUserId    string
 	SourceUserId    string
 	SourceContentId string
@@ -21,15 +17,19 @@ type UpdateItemMessage struct {
 	ItemId   string   `protobuf:"bytes,1,opt,name=itemId,proto3" json:"itemId,omitempty"`
 	IsHidden *bool    `protobuf:"varint,2,opt,name=isHidden,proto3,oneof" json:"isHidden,omitempty"`
 	Labels   []string `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty"`
-	Comment  *string  `protobuf:"bytes,5,opt,name=comment,proto3,oneof" json:"comment,omitempty"`
 }
 
-type CreateFeedBacksMessage struct {
-	FeedBack *content.FeedBack
+type CreateFeedBackMessage struct {
+	FeedbackType string `protobuf:"bytes,1,opt,name=feedbackType,proto3" json:"feedbackType,omitempty"`
+	UserId       string `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
+	ItemId       string `protobuf:"bytes,3,opt,name=itemId,proto3" json:"itemId,omitempty"`
 }
 
-type CreateItemsMessage struct {
-	Item *content.Item
+type CreateItemMessage struct {
+	ItemId   string   `protobuf:"bytes,1,opt,name=itemId,proto3" json:"itemId,omitempty"`
+	IsHidden bool     `protobuf:"varint,2,opt,name=isHidden,proto3" json:"isHidden,omitempty"`
+	Labels   []string `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty"`
+	Category string   `protobuf:"bytes,4,opt,name=category,proto3" json:"category,omitempty"`
 }
 
 type DeleteItemMessage struct {
