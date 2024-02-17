@@ -7,12 +7,12 @@ import (
 
 type Config struct {
 	service.ServiceConf
-	CreateNotificationsConf kq.KqConf
+	CreateNotificationConf  kq.KqConf
 	UpdateNotificationsConf kq.KqConf
 	DeleteNotificationsConf kq.KqConf
-	CreateItemsConf         kq.KqConf
+	CreateItemConf          kq.KqConf
 	UpdateItemConf          kq.KqConf
 	//DeleteItemConf          kq.KqConf
-	CreateFeedBacksConf kq.KqConf
-	EnvHeader           string
+	CreateFeedBackConf kq.KqConf
+	EnvHeader          string
 }

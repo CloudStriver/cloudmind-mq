@@ -13,22 +13,22 @@ import (
 const chanCount = 10
 const bufferCount = 1024
 
-type CreateNotificationsMq struct {
+type CreateNotificationMq struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewCreateNotificationsMq(ctx context.Context, svcCtx *svc.ServiceContext) *CreateNotificationsMq {
-	return &CreateNotificationsMq{
+func NewCreateNotificationMq(ctx context.Context, svcCtx *svc.ServiceContext) *CreateNotificationMq {
+	return &CreateNotificationMq{
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *CreateNotificationsMq) Consume(_, value string) error {
-	var msg *message.CreateNotificationsMessage
+func (l *CreateNotificationMq) Consume(_, value string) error {
+	var msg *message.CreateNotificationMessage
 	if err := sonic.Unmarshal(pconvertor.String2Bytes(value), &msg); err != nil {
-		logx.Errorf("CreateNotificationsMq->Consume Unmarshal err : %v , val : %s", err, value)
+		logx.Errorf("CreateNotificationMq->Consume Unmarshal err : %v , val : %s", err, value)
 		return err
 	}
 
@@ -40,7 +40,7 @@ func (l *CreateNotificationsMq) Consume(_, value string) error {
 		Type:            msg.Type,
 		Text:            msg.Text,
 	}); err != nil {
-		logx.Errorf("CreateNotificationsMq->consume err : %v", err)
+		logx.Errorf("CreateNotificationMq->consume err : %v", err)
 	}
 	return nil
 }
