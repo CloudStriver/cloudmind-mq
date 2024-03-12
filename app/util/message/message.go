@@ -8,10 +8,6 @@ type CreateNotificationMessage struct {
 	Type            int64
 	Text            string
 }
-type UpdateNotificationsMessage struct {
-	UserId   string
-	OnlyType *int64
-}
 
 type UpdateItemMessage struct {
 	ItemId   string   `protobuf:"bytes,1,opt,name=itemId,proto3" json:"itemId,omitempty"`
