@@ -17,5 +17,6 @@ func KqMqs(c config.Config, ctx context.Context, svcContext *svc.ServiceContext)
 		kq.MustNewQueue(c.UpdateItemConf, mq.NewUpdateItemMq(ctx, svcContext)),
 		kq.MustNewQueue(c.CreateFeedBackConf, mq.NewCreateFeedBackMq(ctx, svcContext)),
 		kq.MustNewQueue(c.DeleteItemConf, mq.NewDeleteItemMq(ctx, svcContext)),
+		kq.MustNewQueue(c.DeleteNotificationsConf, mq.NewDeleteNotificationsMq(ctx, svcContext)),
 	}
 }

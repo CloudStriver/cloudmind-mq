@@ -31,3 +31,9 @@ type CreateItemMessage struct {
 type DeleteItemMessage struct {
 	ItemId string
 }
+
+type DeleteNotificationsMessage struct {
+	UserId          string   `json:"userId"`
+	NotificationIds []string `json:"notificationIds"`
+	OnlyType        *int64   `json:"onlyType"`
+}
