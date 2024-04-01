@@ -14,5 +14,7 @@ type Config struct {
 	UpdateItemConf          kq.KqConf
 	DeleteItemConf          kq.KqConf
 	CreateFeedBackConf      kq.KqConf
+	DeleteFileRelationConf  kq.KqConf
 	EnvHeader               string
+	RelationLength          int64
 }
