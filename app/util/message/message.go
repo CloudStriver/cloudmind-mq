@@ -1,5 +1,7 @@
 package message
 
+import "github.com/CloudStriver/service-idl-gen-go/kitex_gen/cloudmind/content"
+
 type CreateNotificationMessage struct {
 	TargetUserId    string
 	SourceUserId    string
@@ -36,4 +38,11 @@ type DeleteNotificationsMessage struct {
 	UserId          string   `json:"userId"`
 	NotificationIds []string `json:"notificationIds"`
 	OnlyType        *int64   `json:"onlyType"`
+}
+
+type DeleteFileRelationsMessage struct {
+	FromType int64                    `json:"fromType"`
+	FromId   string                   `json:"fromId"`
+	ToType   int64                    `json:"toType"`
+	Files    []*content.FileParameter `json:"files"`
 }
