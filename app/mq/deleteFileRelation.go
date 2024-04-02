@@ -5,7 +5,6 @@ import (
 	"github.com/CloudStriver/cloudmind-mq/app/svc"
 	"github.com/CloudStriver/cloudmind-mq/app/util/message"
 	"github.com/CloudStriver/go-pkg/utils/pconvertor"
-	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/cloudmind/content"
 	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/platform/relation"
 	"github.com/bytedance/sonic"
 	"github.com/samber/lo"
@@ -32,14 +31,14 @@ func (l *DeleteFileRelationMq) Consume(_, value string) error {
 		return err
 	}
 
-	if err := mr.Finish(lo.Map(msg.Files, func(item *content.FileParameter, _ int) func() error {
+	if err := mr.Finish(lo.Map(msg.Files, func(item string, _ int) func() error {
 		var i int64
 		for i = 1; i <= l.svcCtx.Config.RelationLength; i++ {
 			_, _ = l.svcCtx.RelationRPC.DeleteRelation(l.ctx, &relation.DeleteRelationReq{
 				FromType:     msg.FromType,
 				FromId:       msg.FromId,
 				ToType:       msg.ToType,
-				ToId:         item.FileId,
+				ToId:         item,
 				RelationType: i,
 			})
 		}
