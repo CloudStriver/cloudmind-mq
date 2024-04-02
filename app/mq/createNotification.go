@@ -10,9 +10,6 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-const chanCount = 10
-const bufferCount = 1024
-
 type CreateNotificationMq struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
