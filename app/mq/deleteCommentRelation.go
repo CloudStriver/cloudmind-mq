@@ -6,8 +6,7 @@ import (
 	"github.com/CloudStriver/cloudmind-mq/app/util/message"
 	"github.com/CloudStriver/go-pkg/utils/pconvertor"
 	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/basic"
-	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/platform/comment"
-	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/platform/relation"
+	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/platform"
 	"github.com/bytedance/sonic"
 	"github.com/samber/lo"
 	"github.com/zeromicro/go-zero/core/logx"
@@ -33,7 +32,7 @@ func (l *DeleteCommentRelationMq) Consume(_, value string) error {
 		return err
 	}
 
-	_, err := l.svcCtx.RelationRPC.DeleteNode(l.ctx, &relation.DeleteNodeReq{
+	_, err := l.svcCtx.PlatformRPC.DeleteNode(l.ctx, &platform.DeleteNodeReq{
 		NodeId:   msg.FromId,
 		NodeType: msg.FromType,
 	})
@@ -43,9 +42,9 @@ func (l *DeleteCommentRelationMq) Consume(_, value string) error {
 	}
 
 	for {
-		var res *comment.GetCommentListResp
-		res, err = l.svcCtx.CommentRPC.GetCommentList(l.ctx, &comment.GetCommentListReq{
-			FilterOptions: &comment.CommentFilterOptions{
+		var res *platform.GetCommentListResp
+		res, err = l.svcCtx.PlatformRPC.GetCommentList(l.ctx, &platform.GetCommentListReq{
+			FilterOptions: &platform.CommentFilterOptions{
 				OnlySubjectId: lo.ToPtr(msg.FromId),
 			},
 			Pagination: &basic.PaginationOptions{
@@ -61,10 +60,10 @@ func (l *DeleteCommentRelationMq) Consume(_, value string) error {
 		}
 
 		err = mr.Finish(func() error {
-			ids := lo.Map(res.Comments, func(val *comment.CommentInfo, _ int) string {
+			ids := lo.Map(res.Comments, func(val *platform.CommentInfo, _ int) string {
 				return val.Id
 			})
-			_, err1 := l.svcCtx.CommentRPC.DeleteCommentByIds(l.ctx, &comment.DeleteCommentByIdsReq{Ids: ids})
+			_, err1 := l.svcCtx.PlatformRPC.DeleteCommentByIds(l.ctx, &platform.DeleteCommentByIdsReq{Ids: ids})
 			if err1 != nil {
 				logx.Errorf("DeleteCommentRelationMq->Consume DeleteCommentByIds err : %v , val : %s", err1, ids)
 				return err1
@@ -72,7 +71,7 @@ func (l *DeleteCommentRelationMq) Consume(_, value string) error {
 			return nil
 		}, func() error {
 			for _, val := range res.Comments {
-				_, err2 := l.svcCtx.RelationRPC.DeleteNode(l.ctx, &relation.DeleteNodeReq{
+				_, err2 := l.svcCtx.PlatformRPC.DeleteNode(l.ctx, &platform.DeleteNodeReq{
 					NodeId:   val.Id,
 					NodeType: msg.FromType,
 				})

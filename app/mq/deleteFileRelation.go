@@ -5,7 +5,7 @@ import (
 	"github.com/CloudStriver/cloudmind-mq/app/svc"
 	"github.com/CloudStriver/cloudmind-mq/app/util/message"
 	"github.com/CloudStriver/go-pkg/utils/pconvertor"
-	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/platform/relation"
+	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/platform"
 	"github.com/bytedance/sonic"
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -30,7 +30,7 @@ func (l *DeleteFileRelationMq) Consume(_, value string) error {
 	}
 
 	for _, v := range msg.FromIds {
-		_, err := l.svcCtx.RelationRPC.DeleteNode(l.ctx, &relation.DeleteNodeReq{
+		_, err := l.svcCtx.PlatformRPC.DeleteNode(l.ctx, &platform.DeleteNodeReq{
 			NodeId:   v,
 			NodeType: msg.FromType,
 		})
