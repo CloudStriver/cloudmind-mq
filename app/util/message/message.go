@@ -40,7 +40,10 @@ type DeleteNotificationsMessage struct {
 
 type DeleteFileRelationsMessage struct {
 	FromType int64    `json:"fromType"`
-	FromId   string   `json:"fromId"`
-	ToType   int64    `json:"toType"`
-	Files    []string `json:"files"`
+	FromIds  []string `json:"fromIds"`
+}
+
+type DeleteCommentRelationsMessage struct {
+	FromType int64  `json:"fromType"`
+	FromId   string `json:"fromId"`
 }

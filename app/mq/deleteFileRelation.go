@@ -7,9 +7,7 @@ import (
 	"github.com/CloudStriver/go-pkg/utils/pconvertor"
 	"github.com/CloudStriver/service-idl-gen-go/kitex_gen/platform/relation"
 	"github.com/bytedance/sonic"
-	"github.com/samber/lo"
 	"github.com/zeromicro/go-zero/core/logx"
-	"github.com/zeromicro/go-zero/core/mr"
 )
 
 type DeleteFileRelationMq struct {
@@ -31,20 +29,15 @@ func (l *DeleteFileRelationMq) Consume(_, value string) error {
 		return err
 	}
 
-	if err := mr.Finish(lo.Map(msg.Files, func(item string, _ int) func() error {
-		var i int64
-		for i = 1; i <= l.svcCtx.Config.RelationLength; i++ {
-			_, _ = l.svcCtx.RelationRPC.DeleteRelation(l.ctx, &relation.DeleteRelationReq{
-				FromType:     msg.FromType,
-				FromId:       msg.FromId,
-				ToType:       msg.ToType,
-				ToId:         item,
-				RelationType: i,
-			})
+	for _, v := range msg.FromIds {
+		_, err := l.svcCtx.RelationRPC.DeleteNode(l.ctx, &relation.DeleteNodeReq{
+			NodeId:   v,
+			NodeType: msg.FromType,
+		})
+		if err != nil {
+			logx.Errorf("DeleteFileRelationMq->Consume DeleteNode err : %v , val : %s", err, v)
+			return err
 		}
-		return nil
-	})...); err != nil {
-		return err
 	}
 
 	return nil

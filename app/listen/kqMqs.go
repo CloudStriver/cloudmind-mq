@@ -19,5 +19,6 @@ func KqMqs(c config.Config, ctx context.Context, svcContext *svc.ServiceContext)
 		kq.MustNewQueue(c.DeleteItemConf, mq.NewDeleteItemMq(ctx, svcContext)),
 		kq.MustNewQueue(c.DeleteNotificationsConf, mq.NewDeleteNotificationsMq(ctx, svcContext)),
 		kq.MustNewQueue(c.DeleteFileRelationConf, mq.NewDeleteFileRelationMq(ctx, svcContext)),
+		kq.MustNewQueue(c.DeleteCommentRelationConf, mq.NewDeleteCommentRelationMq(ctx, svcContext)),
 	}
 }

@@ -12,7 +12,7 @@ require (
 	golang.org/x/net v0.19.0
 )
 
-//replace github.com/CloudStriver/service-idl-gen-go => ../service-idl-gen-go
+replace github.com/CloudStriver/service-idl-gen-go => ../service-idl-gen-go
 
 require (
 	github.com/apache/thrift v0.16.0 // indirect
