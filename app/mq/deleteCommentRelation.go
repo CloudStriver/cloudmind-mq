@@ -61,17 +61,24 @@ func (l *DeleteCommentRelationMq) Consume(_, value string) error {
 		}
 
 		err = mr.Finish(func() error {
-
+			ids := lo.Map(res.Comments, func(val *comment.CommentInfo, _ int) string {
+				return val.Id
+			})
+			_, err1 := l.svcCtx.CommentRPC.DeleteCommentByIds(l.ctx, &comment.DeleteCommentByIdsReq{Ids: ids})
+			if err1 != nil {
+				logx.Errorf("DeleteCommentRelationMq->Consume DeleteCommentByIds err : %v , val : %s", err1, ids)
+				return err1
+			}
 			return nil
 		}, func() error {
 			for _, val := range res.Comments {
-				_, err1 := l.svcCtx.RelationRPC.DeleteNode(l.ctx, &relation.DeleteNodeReq{
+				_, err2 := l.svcCtx.RelationRPC.DeleteNode(l.ctx, &relation.DeleteNodeReq{
 					NodeId:   val.Id,
 					NodeType: msg.FromType,
 				})
-				if err1 != nil {
-					logx.Errorf("DeleteCommentRelationMq->Consume DeleteNode err : %v , val : %s", err1, val)
-					return err1
+				if err2 != nil {
+					logx.Errorf("DeleteCommentRelationMq->Consume DeleteNode err : %v , val : %s", err2, val)
+					return err2
 				}
 			}
 			return nil
