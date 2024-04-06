@@ -4,15 +4,16 @@ go 1.20
 
 require (
 	github.com/CloudStriver/go-pkg v0.0.0-20240206060942-84060a3dd273
-	github.com/CloudStriver/service-idl-gen-go v0.0.0-20240402021409-326abc356747
+	github.com/CloudStriver/service-idl-gen-go v0.0.0-20240406082442-939ea3e0c24f
 	github.com/bytedance/sonic v1.10.2
+	github.com/cloudwego/kitex v0.8.0
 	github.com/samber/lo v1.39.0
 	github.com/zeromicro/go-queue v1.1.8
 	github.com/zeromicro/go-zero v1.6.1
 	golang.org/x/net v0.19.0
 )
 
-replace github.com/CloudStriver/service-idl-gen-go => ../service-idl-gen-go
+//replace github.com/CloudStriver/service-idl-gen-go => ../service-idl-gen-go
 
 require (
 	github.com/apache/thrift v0.16.0 // indirect
@@ -29,7 +30,6 @@ require (
 	github.com/cloudwego/fastpb v0.0.4 // indirect
 	github.com/cloudwego/frugal v0.1.12 // indirect
 	github.com/cloudwego/hertz v0.7.3 // indirect
-	github.com/cloudwego/kitex v0.8.0 // indirect
 	github.com/cloudwego/localsession v0.0.2 // indirect
 	github.com/cloudwego/netpoll v0.5.1 // indirect
 	github.com/cloudwego/thriftgo v0.3.3 // indirect
