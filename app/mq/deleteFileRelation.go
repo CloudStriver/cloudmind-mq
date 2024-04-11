@@ -29,15 +29,13 @@ func (l *DeleteFileRelationMq) Consume(_, value string) error {
 		return err
 	}
 
-	for _, v := range msg.FromIds {
-		_, err := l.svcCtx.PlatformRPC.DeleteNode(l.ctx, &platform.DeleteNodeReq{
-			NodeId:   v,
-			NodeType: msg.FromType,
-		})
-		if err != nil {
-			logx.Errorf("DeleteFileRelationMq->Consume DeleteNode err : %v , val : %s", err, v)
-			return err
-		}
+	_, err := l.svcCtx.PlatformRPC.DeleteNode(l.ctx, &platform.DeleteNodeReq{
+		NodeId:   msg.FromId,
+		NodeType: msg.FromType,
+	})
+	if err != nil {
+		logx.Errorf("DeleteFileRelationMq->Consume DeleteNode err : %v , val : %s", err, msg)
+		return err
 	}
 
 	return nil
