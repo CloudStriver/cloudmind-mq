@@ -39,8 +39,8 @@ type DeleteNotificationsMessage struct {
 }
 
 type DeleteFileRelationsMessage struct {
-	FromType int64    `json:"fromType"`
-	FromIds  []string `json:"fromIds"`
+	FromType int64  `json:"fromType"`
+	FromId   string `json:"fromId"`
 }
 
 type DeleteCommentRelationsMessage struct {
